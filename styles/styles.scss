@@ -20,10 +20,17 @@ body {
   main {
     .home {
       figure {
-        display: flex;
-        flex-direction: column;
+        display: grid;
         align-items: center;
         justify-content: center;
+        grid-template-areas:
+          "A"
+          "B";
+
+        .astronauta {
+          width: max-content;
+          grid-area: A;
+        }
 
         .desc {
           display: flex;
@@ -31,6 +38,7 @@ body {
           justify-content: center;
           flex-direction: column;
           margin-bottom: 9rem;
+          height: 100%;
 
           h1 {
             color: var(--defaultFontColorTitle);
@@ -46,8 +54,8 @@ body {
 
           img {
             margin-top: 3.5rem;
-            padding: 3rem 1.5rem;
-            border: 0.4rem solid var(--defaultFontColorTitle);
+            padding: 1.5rem 0.5rem;
+            border: 0.3rem solid var(--defaultFontColorTitle);
             border-radius: 76rem;
           }
         }
@@ -58,7 +66,7 @@ body {
       display: grid;
       grid-template-columns: 1fr;
       gap: 5rem;
-      padding: 5.3rem 9.2rem;
+      padding: 6.4rem 11rem;
       background-color: var(--defaultFontColorDesc);
 
       .card {
@@ -68,6 +76,7 @@ body {
         border-radius: 2rem;
         box-shadow: 0px 0.3rem 1.3rem 0px rgba(0, 0, 0, 0.25);
         background-color: white;
+        max-width: 32rem;
 
         h2 {
           font-size: 3rem;
@@ -85,6 +94,7 @@ body {
 
     .contacts {
       display: grid;
+      grid-template-areas: "A B B";
 
       form {
         display: flex;
@@ -93,6 +103,7 @@ body {
         align-items: flex-start;
         justify-content: center;
         padding: 8rem;
+        grid-area: A;
 
         h2 {
           color: var(--defaultFontColorTitle);
@@ -152,6 +163,12 @@ body {
           line-height: 2.4rem;
         }
       }
+
+      .background {
+        grid-area: B;
+        background-image: url(../assets/backgroundForm.png);
+        background-size: cover;
+      }
     }
   }
 
@@ -164,3 +181,44 @@ body {
     height: 8rem;
   }
 }
+
+@media (min-width: 750px) {
+  body {
+    main {
+      .home {
+        figure {
+          grid-template-areas: "B A";
+
+          .desc {
+            align-items: flex-start;
+          }
+
+          .desc:last-child {
+            justify-content: flex-end;
+          }
+        }
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    main {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .contacts {
+        form {
+          margin: 5rem;
+        }
+      }
+    }
+  }
+}
+

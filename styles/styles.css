@@ -16,10 +16,15 @@ body {
   font-size: 1.6rem;
 }
 body main .home figure {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   justify-content: center;
+  grid-template-areas: "A" "B";
+}
+body main .home figure .astronauta {
+  width: -moz-max-content;
+  width: max-content;
+  grid-area: A;
 }
 body main .home figure .desc {
   display: flex;
@@ -27,6 +32,7 @@ body main .home figure .desc {
   justify-content: center;
   flex-direction: column;
   margin-bottom: 9rem;
+  height: 100%;
 }
 body main .home figure .desc h1 {
   color: var(--defaultFontColorTitle);
@@ -40,15 +46,15 @@ body main .home figure .desc p {
 }
 body main .home figure .desc img {
   margin-top: 3.5rem;
-  padding: 3rem 1.5rem;
-  border: 0.4rem solid var(--defaultFontColorTitle);
+  padding: 1.5rem 0.5rem;
+  border: 0.3rem solid var(--defaultFontColorTitle);
   border-radius: 76rem;
 }
 body main .cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 5rem;
-  padding: 5.3rem 9.2rem;
+  padding: 6.4rem 11rem;
   background-color: var(--defaultFontColorDesc);
 }
 body main .cards .card {
@@ -58,6 +64,7 @@ body main .cards .card {
   border-radius: 2rem;
   box-shadow: 0px 0.3rem 1.3rem 0px rgba(0, 0, 0, 0.25);
   background-color: white;
+  max-width: 32rem;
 }
 body main .cards .card h2 {
   font-size: 3rem;
@@ -71,6 +78,7 @@ body main .cards .card p {
 }
 body main .contacts {
   display: grid;
+  grid-template-areas: "A B B";
 }
 body main .contacts form {
   display: flex;
@@ -79,6 +87,7 @@ body main .contacts form {
   align-items: flex-start;
   justify-content: center;
   padding: 8rem;
+  grid-area: A;
 }
 body main .contacts form h2 {
   color: var(--defaultFontColorTitle);
@@ -133,6 +142,11 @@ body main .contacts form .btn {
   font-weight: 700;
   line-height: 2.4rem;
 }
+body main .contacts .background {
+  grid-area: B;
+  background-image: url(../assets/backgroundForm.png);
+  background-size: cover;
+}
 body footer {
   display: flex;
   align-items: center;
@@ -140,4 +154,27 @@ body footer {
   background-color: var(--defaultFontColorDesc);
   color: white;
   height: 8rem;
+}
+
+@media (min-width: 750px) {
+  body main .home figure {
+    grid-template-areas: "B A";
+  }
+  body main .home figure .desc {
+    align-items: flex-start;
+  }
+  body main .home figure .desc:last-child {
+    justify-content: flex-end;
+  }
+  body main .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1280px) {
+  body main .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  body main .contacts form {
+    margin: 5rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
